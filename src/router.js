@@ -34,7 +34,11 @@ const MyTransition = {
 
 export default React.memo(() => (
   <SafeAreaView style={styles.container}>
-      <StatusBar />
+      <StatusBar
+          style="dark"
+          translucent={true}
+          hidden={false}
+      />
           <NavigationContainer>
                 {/*Navigator param*/}
                 <Stack.Navigator
