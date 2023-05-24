@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import {Text, StyleSheet, TouchableOpacity, View, Image, StatusBar} from 'react-native';
 
 import theme from '../styles/theme';
 
@@ -82,6 +82,7 @@ export const KnotCategory = (props) => {
 
   return (
     <CategoryWrapper onPress={onPress} active={active} height={height}>
+      <StatusBar />
       <View style={styles.categoryImgWrapper}>
         <Image
           source={image}

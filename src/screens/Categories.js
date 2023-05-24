@@ -7,7 +7,7 @@ import {
   Text,
   StyleSheet,
   BackHandler,
-  Dimensions,
+  Dimensions, StatusBar,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -24,7 +24,7 @@ import connectToDB from '../db';
 import AlertAccess from '../utils/AlertAccess/AlertAccess';
 import defaultLanguage from '../utils/DefaultLanguage/defaultLanguage';
 import Spinner from '../components/Spinner/Spinner';
-import AdBanner from '../components/AdMob';
+//import AdBanner from '../components/AdMob';
 
   class Categories extends React.Component {
   state = {
@@ -154,6 +154,7 @@ import AdBanner from '../components/AdMob';
     }
     return (
       <>
+        <StatusBar />
         <ScrollView
           style={styles.container}
           stickyHeaderIndices={[0, 3, 13]}
@@ -196,10 +197,10 @@ import AdBanner from '../components/AdMob';
               />,
             ];
           })}
+          {/*admob banner*/}
+          {/*<AdBanner />*/}
         </ScrollView>
         <ThumbIcon onPress={Rate} style={{ bottom: height + 15 }} />
-        {/*admob banner*/}
-        <AdBanner setHeight={(state) => this.setState(state)} />
       </>
     );
   }

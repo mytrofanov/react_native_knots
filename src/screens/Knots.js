@@ -8,7 +8,6 @@ import {
   StyleSheet,
   BackHandler,
   Text,
-    Image
 } from 'react-native';
 
 import { KnotCategory } from '../components/Category';
@@ -22,8 +21,8 @@ import { results, search, noResult } from '../assets/staticLocalisation.json';
 import theme from '../styles/theme';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
 import Spinner from '../components/Spinner/Spinner';
-import AdBanner from '../components/AdMob';
-//import { showInterstitialAd } from '../components/AdMob';
+//import AdBanner from '../components/AdMob';
+// import { showInterstitialAd } from '../components/AdMob';
 
 class Knots extends React.PureComponent {
   constructor(props) {
@@ -63,7 +62,7 @@ class Knots extends React.PureComponent {
     this.setState({ isLoading: true });
     const { navigation } = this.props;
     goBackSafe(navigation);
-    //await showInterstitialAd();
+    // showInterstitialAd();
     /*End spinner*/
     this.setState({ isLoading: false });
     return true;
@@ -157,7 +156,8 @@ class Knots extends React.PureComponent {
           </Text>
         ) : null}
 
-        <AdBanner />
+        {/*banner*/}
+        {/*<AdBanner />*/}
 
       </View>
     );

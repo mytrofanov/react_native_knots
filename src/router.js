@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import theme from './styles/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import Categories from './screens/Categories';
@@ -15,7 +15,7 @@ import HeaderTitle from "./components/HeaderTitle";
 import {goBackSafe} from "./utils/GoBackSafe/GoBackSafe";
 import Knot from "./screens/Knot";
 import Knots from "./screens/Knots";
-//import { showInterstitialAd } from './components/AdMob';
+// import { showInterstitialAd } from './components/AdMob';
 
 
 const Stack = createStackNavigator();
@@ -33,8 +33,8 @@ const MyTransition = {
 
 
 export default React.memo(() => (
-  <View style={styles.container}>
-      {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+  <SafeAreaView style={styles.container}>
+      <StatusBar />
           <NavigationContainer>
                 {/*Navigator param*/}
                 <Stack.Navigator
@@ -106,8 +106,8 @@ export default React.memo(() => (
                                 <View style={styles.headerLeft}>
                                     <BackIcon
                                         onPress={async () => {
+                                            // showInterstitialAd();
                                             goBackSafe(navigation);
-                                            //await showInterstitialAd();
                                         }}
                                         style={{ width: 30 }}
                                     />
@@ -125,7 +125,10 @@ export default React.memo(() => (
                             headerLeft: () => (
                                 <View style={styles.headerLeft}>
                                     <BackIcon
-                                        onPress={() => goBackSafe(navigation)}
+                                        onPress={() => {
+                                            // showInterstitialAd()
+                                            goBackSafe(navigation)
+                                        }}
                                         style={{ width: 30 }}
                                     />
                                 </View>
@@ -134,7 +137,7 @@ export default React.memo(() => (
                     />
                   </Stack.Navigator>
                   </NavigationContainer>
-  </View>
+  </SafeAreaView>
 ));
 
 const styles = StyleSheet.create({
