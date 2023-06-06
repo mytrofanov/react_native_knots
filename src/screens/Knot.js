@@ -41,7 +41,7 @@ import {
 import { knotLike } from '../actions/knots';
 import theme from '../styles/theme';
 import { goBackSafe } from '../utils/GoBackSafe/GoBackSafe';
-// import { showInterstitialAd } from '../components/AdMob';
+import { showInterstitialAd } from '../components/AdMob';
 
 class Knot extends React.PureComponent {
   constructor(props) {
@@ -108,7 +108,7 @@ class Knot extends React.PureComponent {
   handleBackEvent = async () => {
     const { navigation } = this.props;
     goBackSafe(navigation);
-    // showInterstitialAd();
+    showInterstitialAd();
 
     return true;
   };
@@ -283,14 +283,14 @@ class Knot extends React.PureComponent {
         <View
           style={[
             styles.container,
-            { flexDirection: isPortrait ? 'column' : 'row' },
+            { flexDirection: 'column' },
           ]}
         >
           <View
             style={[
               {
-                flexDirection: isPortrait ? 'row' : 'row-reverse',
-                width: isPortrait ? width : width / 2,
+                flexDirection: 'row',
+                width: width,
                 alignItems: 'center',
               },
             ]}
@@ -318,13 +318,13 @@ class Knot extends React.PureComponent {
                 frameCount={is360 ? +knoten_frame_360 : +knoten_frame_2d}
               />
             </Animated.View>
-            <Slider
+
+          </View>
+          <Slider
               style={[
                 styles.slider,
                 {
-                  width: width,
-                  marginLeft: isPortrait ? -knotHeight / 2.2 : 0,
-                  marginRight: !isPortrait ? -knotHeight / 2.3 : 0,
+                  width: width * 0.9,
                 },
               ]}
               minimumValue={1}
@@ -337,8 +337,7 @@ class Knot extends React.PureComponent {
               onValueChange={this.changeSpeed}
               onSlidingComplete={OnSlidingComplete}
               onResponderStart={OnResponderStart}
-            />
-          </View>
+          />
           {showSpeed && <Text style={styles.speed}>Speed: {speed}</Text>}
 
           <ScrollView style={styles.description}>
@@ -466,8 +465,10 @@ const styles = StyleSheet.create({
     color: theme.knotAttentionText,
   },
   slider: {
-    height: 30,
-    transform: [{ rotate: '-90deg' }],
+    marginLeft: 10,
+    marginTop: 20,
+    marginRight: 25,
+    // transform: [{ rotate: '-90deg' }],
   },
   footer: {
     ...theme.knotFooter,

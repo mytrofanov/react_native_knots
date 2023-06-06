@@ -25,6 +25,7 @@ import AlertAccess from '../utils/AlertAccess/AlertAccess';
 import defaultLanguage from '../utils/DefaultLanguage/defaultLanguage';
 import Spinner from '../components/Spinner/Spinner';
 //import AdBanner from '../components/AdMob';
+import * as ScreenOrientation from "expo-screen-orientation";
 
   class Categories extends React.Component {
   state = {
@@ -62,7 +63,13 @@ import Spinner from '../components/Spinner/Spinner';
 
     BackHandler.addEventListener('hardwareBackPress', this.exitApp);
     Dimensions.addEventListener('change', handleOrientationChanges);
-
+    ScreenOrientation.addOrientationChangeListener(
+        (o) => {
+          console.log('o.orientationInfo.orientation: ', o.orientationInfo.orientation);
+          // alert(o.orientationInfo.orientation)
+        }
+    );
+    this.checkOrientation();
     this.loadData();
     getLanguage();
     /*Set languages params*/
@@ -71,7 +78,15 @@ import Spinner from '../components/Spinner/Spinner';
     });
   }
 
+    checkOrientation = async () => {
+      const orientation = await ScreenOrientation.getOrientationAsync();
+      console.log("orientation", orientation);
+    };
+
   componentWillUnmount() {
+    const {
+      handleOrientationChanges,
+    } = this.props;
     BackHandler.removeEventListener('hardwareBackPress', this.exitApp);
     Dimensions.removeEventListener('change', handleOrientationChanges);
   }

@@ -27,6 +27,10 @@ const darkTheme = {
     borderTopColor: '#4c4c4c',
     borderBottomColor: '#161616',
   },
+  barStyle: {
+    background: '#344955',
+    text: '#fff',
+  }
 };
 
 /*Light app theme*/
@@ -58,6 +62,10 @@ const lightTheme = {
     borderTopColor: '#98acf8',
     borderBottomColor: '#98acf8',
   },
+  barStyle: {
+    backgroundColor: '#c4dfe6',
+    text: "dark-content"
+  }
 };
 
 export default Appearance.getColorScheme() === 'dark' ? darkTheme : lightTheme;
